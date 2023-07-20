@@ -1,0 +1,15 @@
+Q:Why is it easier to use qemu-guest instead of the manual approach?
+A:
+Less arguments, focuses on the specific requirements of the app.
+Easier to clean up, no need to kill the qemu instance.
+
+Q:What is the easiest way to find the dynamically allocated IP for apps that use lwip with debug information enabled?
+A:Inspecting the dnsmasq log file.
+
+Q:What is a necessary step in manually cleaning up your work?
+A:
+Killing the dnsmasq process.
+Deleting the bridge.
+
+Q:What are the 2 usecases for a Redis app?
+A:Key-value databases; fast writing and reading of data from memory.

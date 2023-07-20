@@ -1,0 +1,9 @@
+Q:Having the output of ukdebug, go through the Unikraft code, in the unikraft folder. Find the components that you have seen in the outputs, in the platform library, and where the kernel messages are sent. The platform library, even though is called a library, is not in the lib subfolder. It is placed in the plat folder. Explore the code, at your own pace. Can you also find where the main function is called?
+首先，我们需要了解Unikraft的文件结构。根据提供的内容，Unikraft代码有几个关键文件：setup.c，boot.c，_libkvmplat_entry函数以及另外一些构造函数。
+
+在setup.c文件中，硬件组件被初始化。可以在这里找到"uk_pr_{level}"函数的调用，其中"level"可以是Debug, info, warn, err和crit。这些函数调用用于发送内核消息。
+
+在_libkvmplat_entry函数中，堆栈被更改，并调用_libkvmplat_entry2函数。_libkvmplat_entry2函数又调用ukplat_entry_argp，其中构造了argc和argv，并调用ukplat_entry。在ukplat_entry函数中，进行软件组件的初始化，包括内存分配器、调度器和参数解析等。
+
+main函数并不会立即被调用，而是在boot.c文件的大约第160行进行了实际的调用。
+
