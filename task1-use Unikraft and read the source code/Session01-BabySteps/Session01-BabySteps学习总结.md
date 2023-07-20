@@ -12,7 +12,7 @@
 
 Unikraft是一个unikernel SDK，这意味着它为你提供了构建和运行unikernel(即redis, nginx或sqlite等应用程序)所需的模块(源代码，配置和构建系统，运行时支持)。Unikernel是一个单独的映像文件，可以作为独立的运行实例（通常是虚拟机）加载和运行。
 
-![img1](.\img\img1.png)
+![img1](./img/img1.png)
 
 上图中的各部分解析：
 
