@@ -1,0 +1,1 @@
+""strip -s --output-target elf32-i386 /home/unikraft/elftest/elfloader/build/elfloader_qemu-x86_64.dbg -o /home/unikraft/elftest/elfloader/build/elfloader_qemu-x86_64 2>&1 | { grep -v "Empty loadable segment detected" || true; }
