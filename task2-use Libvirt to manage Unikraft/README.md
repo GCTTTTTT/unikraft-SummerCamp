@@ -28,6 +28,21 @@ libvirt的API在/usr/include/libvirt/libvirt.h中进行了函数和数据结构�
 
 libvirt在提供统一的API和管理工具的同时，通过底层驱动和接口实现不同虚拟化技术的管理，从而方便用户对虚拟机、存储和网络等进行统一的管理和操作。
 
+## 文件结构
+
+```
+.
+│--libvirtTest
+	└─04-store-strings_qemu-x86_64
+	│--helloworld_qemu-x86_64
+	│--nginx_qemu-x86_64
+	│--storestringTest_unikernel.xml
+	│--unikernel.xml
+	│--nginxTest_unikernel.xml
+│--img
+│--README.md
+```
+
 ## 项目运行
 
 ### 1）Libvirt成功启动虚拟机
