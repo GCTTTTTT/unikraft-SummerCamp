@@ -1,0 +1,29 @@
+<!-- 定义虚拟机的类型 -->
+<domain type='qemu'>
+      <name>unikraft</name>
+      <memory unit='KiB'>32000</memory>
+      <currentMemory unit='KiB'>32000</currentMemory>
+    <!-- 定义虚拟机的虚拟CPU数量为1 -->
+      <vcpu placement='static'>1</vcpu>
+      <os>
+        <type arch='x86_64'>hvm</type>
+    <!-- unikernel binary path -->
+    		<kernel>/home/unikraft/demo/libvirtTest/helloworld_qemu-x86_64</kernel>
+        <boot dev='hd'/>
+      </os>
+     
+      <clock offset='utc' adjustment='reset'/>
+      <on_poweroff>destroy</on_poweroff>
+      <on_reboot>restart</on_reboot>
+      <on_crash>preserve</on_crash>
+    <cpu mode='custom' match='exact' check='none'>
+            <model fallback='forbid'>qemu64</model>
+          </cpu>
+      <devices>
+        <emulator>/usr/bin/qemu-system-x86_64</emulator>
+        <console type='pty'>
+          <target type='serial' port='0'/>
+        </console>
+        <graphics port="-1" type="vnc" />
+      </devices>
+</domain>

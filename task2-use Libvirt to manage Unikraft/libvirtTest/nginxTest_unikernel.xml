@@ -1,0 +1,46 @@
+<!-- 定义虚拟机的类型 -->
+<domain type='qemu'>
+      <name>nginxTest</name>
+      <memory unit='KiB'>32000</memory>
+      <currentMemory unit='KiB'>32000</currentMemory>
+    <!-- 定义虚拟机的虚拟CPU数量为1 -->
+      <vcpu placement='static'>1</vcpu>
+      <os>
+        <type arch='x86_64'>hvm</type>
+    <!-- unikernel binary path -->
+    		<kernel>/home/unikraft/demo/libvirtTest/nginx_qemu-x86_64</kernel>
+        <boot dev='hd'/>
+      </os>
+     
+      <clock offset='utc' adjustment='reset'/>
+      <on_poweroff>destroy</on_poweroff>
+      <on_reboot>restart</on_reboot>
+      <on_crash>preserve</on_crash>
+      <devices>
+    <!-- The network interface connected to the bridge virbr0 -->
+    <interface type='bridge'>
+              <source bridge='virbr0'/>
+              <target dev='unik0'/>
+              <model type='virtio'/>
+            </interface>
+        <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <filesystem type='mount' accessmode='passthrough'>
+        <source dir='/home/unikraft/demo/mount/ngnix/fs0'/>
+        <target dir='fs0'/>
+    </filesystem>
+         <serial type='pty'>
+    <source path='/dev/pts/20'/>
+    <target port='0'/>
+    <alias name='serial0'/>
+</serial>
+    <console type='pty' tty='/dev/pts/20'>
+        <source path='/dev/pts/20'/>
+        <target type='serial' port='0'/>
+        <alias name='serial0'/>
+    </console>
+    <controller type='usb' index='0' model='piix3-uhci'>
+              <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x2'/></controller>
+    <controller type='pci' index='0' model='pci-root'/>
+        <graphics port="-1" type="vnc" />
+      </devices>
+</domain>
