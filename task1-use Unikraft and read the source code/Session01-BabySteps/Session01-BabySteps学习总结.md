@@ -138,7 +138,7 @@ export UK_WORKDIR=~/.unikraft UK_ROOT=~/.unikraft/unikraft UK_LIBS=~/.unikraft/l
 make menuconfig
 ```
 
-==注意这里使用make menuconfig中的文字交互界面进行配置，“select”并不能直接选择并改变配置，而是要在相应配置上按“Y”来具体选定，这里详细可以阅读交互界面的英文说明，配置好后记得选择save保存。==
+**注意这里使用make menuconfig中的文字交互界面进行配置，“select”并不能直接选择并改变配置，而是要在相应配置上按“Y”来具体选定，这里详细可以阅读交互界面的英文说明，配置好后记得选择save保存。**
 make menuconfig本质就是修改.config配置文件，因此也可以直接修改该配置文件，例如找到并将# CONFIG_PLAT_LINUXU=y修改为CONFIG_PLAT_LINUXU=y，然后就可以正常运行make了，同理可将# CONFIG_PLAT_KVM=y修改为CONFIG_PLAT_KVM=y等
 
 ```
@@ -153,7 +153,7 @@ make （前面导出了环境变量因此可以直接使用make）
 qemu-system-x86_64 -kernel build/01-hello-world-manual_qemu-x86_64 -nographic
 ```
 
-==注意CONFIG_PLAT_KVM=y后生成的是01-hello-world-manual_qemu-x86_64，而不是01-hello-world-manual_kvm-x86_64，且需要用该命令运行！==
+**注意CONFIG_PLAT_KVM=y后生成的是01-hello-world-manual_qemu-x86_64，而不是01-hello-world-manual_kvm-x86_64，且需要用该命令运行！**
 
 ### 构建并运行 httpreply 应用程序
 
@@ -183,7 +183,7 @@ kraft build
 qemu-system-x86_64 -kernel  ./build/httpreply_qemu-x86_64 -nographic
 ```
 
-==注意这里使用kraft run -p kvm -m x86_64运行会报错，因此我使用该命令来运行对应的映像==
+**注意这里使用kraft run -p kvm -m x86_64运行会报错，因此我使用该命令来运行对应的映像**
 
 ```
 sudo brctl addbr virbr0
@@ -196,7 +196,7 @@ ip a s virbr0
 sudo qemu-system-x86_64 -netdev bridge,id=en0,br=virbr0 -device virtio-net-pci,netdev=en0 -append "netdev.ipv4_addr=172.44.0.2 netdev.ipv4_gw_addr=172.44.0.1 netdev.ipv4_subnet_mask=255.255.255.0 --" -kernel build/httpreply_qemu-x86_64 -nographic
 ```
 
-==使用教程中的kraft run -b virbr0 "netdev.ipv4_addr=172.44.0.2 netdev.ipv4_gw_addr=172.44.0.1 netdev.ipv4_subnet_mask=255.255.255.0 --"会报错[CRITICAL] list index out of range==
+**使用教程中的kraft run -b virbr0 "netdev.ipv4_addr=172.44.0.2 netdev.ipv4_gw_addr=172.44.0.1 netdev.ipv4_subnet_mask=255.255.255.0 --"会报错[CRITICAL] list index out of range**
 
 ```
 wget 172.44.0.2:8123
