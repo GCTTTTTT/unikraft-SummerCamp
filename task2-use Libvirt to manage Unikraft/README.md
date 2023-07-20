@@ -43,6 +43,8 @@ libvirt在提供统一的API和管理工具的同时，通过底层驱动和接�
 │--README.md
 ```
 
+其中，libvirtTest文件夹中为实践过程中所需用到的镜像文件与对应的XML配置文件，README.md文件为该任务的文档报告。
+
 ## 项目运行
 
 ### 1）Libvirt成功启动虚拟机
